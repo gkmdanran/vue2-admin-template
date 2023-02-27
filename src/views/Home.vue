@@ -1,18 +1,44 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <ez-menu
+      :menu-json="{ menus: menu, treeProps: { name: 'description' } }"
+      active-text-color="#fff"
+      background-color="#13113a"
+      text-color="#fff"
+      @clickMenuItem="clickMenuItem"
+    >
+    </ez-menu>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
 export default {
-  name: 'Home',
-  components: {
-    HelloWorld
-  }
-}
+  name: "Home",
+  components: {},
+  data() {
+    return {
+      menu: [
+        {
+          icon: "el-icon-delete-solid",
+          description: "测试页面",
+          path: "/demo",
+          id: 1,
+          children: [
+            {
+              icon: "el-icon-delete-solid",
+              description: "测试页面",
+              path: "/demo",
+              id: 1,
+            },
+          ],
+        },
+      ],
+    };
+  },
+  methods: {
+    clickMenuItem(a) {
+      console.log(a);
+    },
+  },
+};
 </script>
