@@ -1,6 +1,11 @@
 <template>
   <el-table-column
-    v-if="!columnNode.slotName && !columnNode.prop && !columnNode.children"
+    v-if="
+      !columnNode.slotName &&
+      !columnNode.prop &&
+      !columnNode.children &&
+      (!('show' in columnNode) ? true : columnNode.show)
+    "
     v-bind="columnNode"
   >
     <template #header="scope">
@@ -11,7 +16,11 @@
   </el-table-column>
 
   <el-table-column
-    v-else-if="columnNode.children && columnNode.children.length > 0"
+    v-else-if="
+      columnNode.children &&
+      columnNode.children.length > 0 &&
+      (!('show' in columnNode) ? true : columnNode.show)
+    "
     v-bind="columnNode"
   >
     <template #header="scope">
@@ -32,7 +41,10 @@
     </template>
   </el-table-column>
 
-  <el-table-column v-else v-bind="columnNode">
+  <el-table-column
+    v-else-if="!('show' in columnNode) ? true : columnNode.show"
+    v-bind="columnNode"
+  >
     <template slot-scope="scope">
       <slot :name="`${columnNode.slotName}`" v-bind="scope">
         {{ scope.row[`${columnNode.prop}`] }}

@@ -7,6 +7,7 @@ import ezContainer from "./ezContainer";
 import ezCollapseList from "./ezCollapseList";
 import ezRadioGroup from "./ezRadioGroup";
 import ezSwitch from "./ezSwitch";
+import ezQueryTemplate from "./ezQueryTemplate";
 const components = [
   ezButton,
   ezTable,
@@ -16,9 +17,10 @@ const components = [
   ezContainer,
   ezCollapseList,
   ezRadioGroup,
-  ezSwitch
+  ezSwitch,
+  ezQueryTemplate,
 ];
-const install = function(Vue) {
+const install = function (Vue) {
   components.forEach(component => {
     Vue.component(component.name, component);
   });

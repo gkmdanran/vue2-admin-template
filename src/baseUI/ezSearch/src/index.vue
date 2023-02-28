@@ -1,5 +1,5 @@
 <template>
-  <el-form class="ez-search-form" v-bind="$attrs" :labelWidth="labelWidth">
+  <el-form class="ez-search" v-bind="$attrs" :labelWidth="labelWidth">
     <el-row>
       <el-col
         :style="getStyle(item)"
